@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main
+      - main/test
 
 jobs:
   build:
@@ -23,6 +23,8 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker image
+      with:
+        file: ./mysite/Dockerfile
       run: |
         docker build -t mysite .
         docker tag mysite:latest ${{ secrets.DOCKER_USERNAME }}/mysite:latest
