@@ -45,8 +45,8 @@ jobs:
     - name: Deploy to EC2
       run: |
         ssh -o StrictHostKeyChecking=no -i /tmp/key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-          docker pull ${{ secrets.DOCKER_USERNAME }}/wagtail-apps/tree/main/mysite
+          docker pull ${{ secrets.DOCKER_USERNAME }}/mysite:latest
           docker stop mysite || true
           docker rm mysite || true
-          docker run -d --name mysite -p 80:80 ${{ secrets.DOCKER_USERNAME }}/wagtail-apps/tree/main/mysite
+          docker run -d --name mysite -p 80:80 ${{ secrets.DOCKER_USERNAME }}/mysite:latest
         EOF
