@@ -24,7 +24,7 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t /mysite .
+        docker build -t mysite .
         docker tag mysite:latest ${{ secrets.DOCKER_USERNAME }}/mysite:latest
         docker push ${{ secrets.DOCKER_USERNAME }}/mysite:latest
 
