@@ -1,5 +1,5 @@
 <h1 align="center">
-    This project was a demonstration of Git Action CI/CD with Docker, Deployed into AWS 
+     Git Action CI/CD with Docker, Deployed into AWS 
 </h1>
 <h1 align="center">
     <picture>
