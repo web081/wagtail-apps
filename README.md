@@ -1,30 +1,16 @@
 <h1 align="center">
+    This project was a demonstration of Git Action CI/CD with Docker, Deployed into AWS 
+</h1>
+<h1 align="center">
     <picture>
         <source media="(prefers-color-scheme: light)" srcset=".github/wagtail.svg">
         <source media="(prefers-color-scheme: dark)" srcset=".github/wagtail-inverse.svg">
         <img width="343" src=".github/wagtail.svg" alt="Wagtail">
     </picture>
 </h1>
-<p align="center">
-    <br>
-    <a href="https://github.com/wagtail/wagtail/actions">
-        <img src="https://github.com/wagtail/wagtail/workflows/Wagtail%20CI/badge.svg" alt="Build Status" />
-    </a>
-    <a href="https://opensource.org/licenses/BSD-3-Clause">
-        <img src="https://img.shields.io/badge/license-BSD-blue.svg" alt="License" />
-    </a>
-    <a href="https://pypi.python.org/pypi/wagtail/">
-        <img src="https://img.shields.io/pypi/v/wagtail.svg" alt="Version" />
-    </a>
-    <a href="https://pypi.python.org/pypi/wagtail/">
-        <img src="https://img.shields.io/pypi/dm/wagtail?logo=Downloads" alt="Monthly downloads" />
-    </a>
-    <a href="https://twitter.com/WagtailCMS">
-        <img src="https://img.shields.io/twitter/follow/WagtailCMS?style=social&logo=twitter" alt="follow on Twitter">
-    </a>
-</p>
 
-Wagtail is an open source content management system built on Django, with a strong community and commercial support. It's focused on user experience, and offers precise control for designers and developers.
+
+Wagtail is an open-source content management system built on Django, with a strong community and commercial support. It's focused on user experience and offers precise control for designers and developers.
 
 ![Wagtail screenshot](https://cdn.jsdelivr.net/gh/wagtail/wagtail@main/.github/wagtail-screenshot-with-browser.png)
 
@@ -71,9 +57,32 @@ python manage.py runserver
 
 For detailed installation and setup docs, see [the getting started tutorial](https://docs.wagtail.org/en/stable/getting_started/tutorial.html).
 
-### 👨‍👩‍👧‍👦 Who’s using it?
+### 👨‍👩‍👧‍👦 GIT ACTION FOR CI/CD AUTOMATION WITH DOCKER
+```sh
+name: CI/CD Pipeline
 
-Wagtail is used by [NASA](https://www.nasa.gov/), [Google](https://www.google.com/), [Oxfam](https://www.oxfam.org/en), the [NHS](https://www.nhs.uk/), [Mozilla](https://www.mozilla.org/en-US/), [MIT](https://www.mit.edu/), the [Red Cross](https://www.icrc.org/en), [Salesforce](https://www.salesforce.com/), [NBC](https://www.nbc.com/), [BMW](https://www.bmw.com/en/index.html), and the US and UK governments. Add your own Wagtail site to [madewithwagtail.org](https://madewithwagtail.org).
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+ check workflow for more details
+```
+
+
 
 ### 📖 Documentation
 
@@ -99,57 +108,4 @@ Wagtail supports:
 
 ---
 
-### 📢 Community Support
 
-There is an active community of Wagtail users and developers responding to questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/wagtail). When posting questions, please read Stack Overflow's advice on [how to ask questions](https://stackoverflow.com/help/how-to-ask) and remember to tag your question "wagtail".
-
-For topics and discussions that do not fit Stack Overflow's question and answer format we have a [Slack workspace](https://github.com/wagtail/wagtail/wiki/Slack). Please respect the time and effort of volunteers by not asking the same question in multiple places.
-
-[![Join slack community](.github/join-slack-community.png)](https://github.com/wagtail/wagtail/wiki/Slack)
-
-Our [GitHub discussion boards](https://github.com/wagtail/wagtail/discussions) are open for sharing ideas and plans for the Wagtail project.
-
-We maintain a curated list of third party packages, articles and other resources at [Awesome Wagtail](https://github.com/springload/awesome-wagtail).
-
-### 🧑‍💼 Commercial Support
-
-Wagtail is sponsored by [Torchbox](https://torchbox.com/). If you need help implementing or hosting Wagtail, please contact us: hello@torchbox.com. See also [madewithwagtail.org/developers/](https://madewithwagtail.org/developers/) for expert Wagtail developers around the world.
-
-### 🔐 Security
-
-We take the security of Wagtail, and related packages we maintain, seriously. If you have found a security issue with any of our projects please email us at [security@wagtail.org](mailto:security@wagtail.org) so we can work together to find and patch the issue. We appreciate responsible disclosure with any security related issues, so please contact us first before creating a GitHub issue.
-
-If you want to send an encrypted email (optional), the public key ID for security@wagtail.org is 0xbed227b4daf93ff9, and this public key is available from most commonly-used keyservers.
-
-### 🕒 Release schedule
-
-Feature releases of Wagtail are released every three months. Selected releases are designated as Long Term Support (LTS) releases, and will receive maintenance updates for an extended period to address any security and data-loss related issues. For dates of past and upcoming releases and support periods, see [Release Schedule](https://github.com/wagtail/wagtail/wiki/Release-schedule).
-
-#### 🕛 Nightly releases
-
-To try out the latest features before a release, we also create builds from `main` every night. You can find instructions on how to install the latest nightly release at https://releases.wagtail.org/nightly/index.html
-
-### 🙋🏽 Contributing
-
-If you're a Python or Django developer, fork the repo and get stuck in! We have several developer focused channels on the [Slack workspace](https://github.com/wagtail/wagtail/wiki/Slack).
-
-You might like to start by reviewing the [contributing guidelines](https://docs.wagtail.org/en/latest/contributing/index.html) and checking issues with the [good first issue](https://github.com/wagtail/wagtail/labels/good%20first%20issue) label.
-
-We also welcome translations for Wagtail's interface. Translation work should be submitted through [Transifex](https://explore.transifex.com/torchbox/wagtail/).
-
-### 🔓 License
-
-[BSD](https://github.com/wagtail/wagtail/blob/main/LICENSE) - Free to use and modify for any purpose, including both open and closed-source code.
-
-### 👏 Thanks
-
-We thank the following organisations for their services used in Wagtail's development:
-
-[![Browserstack](https://cdn.jsdelivr.net/gh/wagtail/wagtail@main/.github/browserstack-logo.svg)](https://www.browserstack.com/)<br>
-[BrowserStack](https://www.browserstack.com/) provides the project with free access to their live web-based browser testing tool, and automated Selenium cloud testing.
-
-[![squash.io](https://cdn.jsdelivr.net/gh/wagtail/wagtail@main/.github/squash-logo.svg)](https://www.squash.io/)<br>
-[Squash](https://www.squash.io/) provides the project with free test environments for reviewing pull requests.
-
-[![Assistiv Labs](https://cdn.jsdelivr.net/gh/wagtail/wagtail@main/.github/assistivlabs-logo.png)](https://assistivlabs.com/)<br>
-[Assistiv Labs](https://assistivlabs.com/) provides the project with unlimited access to their remote testing with assistive technologies.
